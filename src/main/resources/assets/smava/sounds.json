@@ -1,0 +1,27 @@
+{
+	"entities.smava_creeper.fuse": {
+		"sounds": [
+			"smava:fuse"
+		]
+	},
+	"entities.smava_creeper.blow": {
+		"sounds": [
+			"smava:blow"
+		]
+	},
+	"entities.smava_creeper.hurt": {
+		"sounds": [
+			"smava:hurt"
+		]
+	},
+	"entities.smava_creeper.ambient": {
+		"sounds": [
+			"smava:ambient1",
+			"smava:ambient2",
+			"smava:ambient3",
+			"smava:ambient4",
+			"smava:ambient5",
+			"smava:ambient6"
+		]
+	}
+}
