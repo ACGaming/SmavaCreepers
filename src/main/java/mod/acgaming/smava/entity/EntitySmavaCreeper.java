@@ -1,9 +1,7 @@
 package mod.acgaming.smava.entity;
-import mod.acgaming.smava.init.InitSmavaCreepers;
-import net.minecraft.entity.Entity;
+import mod.acgaming.smava.SmavaCreepers;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.monster.EntityCreeper;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
@@ -37,7 +35,7 @@ public class EntitySmavaCreeper extends EntityCreeper
 			
 			if (i > 0 && this.timeSinceIgnited == 0)
 			{
-				this.playSound(InitSmavaCreepers.ENTITY_SMAVACREEPER_FUSE, 1.0F, 1.0F);
+				this.playSound(SmavaCreepers.ENTITY_SMAVACREEPER_FUSE, 1.0F, 1.0F);
 			}
 			
 			this.timeSinceIgnited += i;
@@ -64,7 +62,7 @@ public class EntitySmavaCreeper extends EntityCreeper
             boolean flag = net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.world, this);
             float f = this.getPowered() ? 2.0F : 1.0F;
             this.dead = true;
-            this.world.playSound(null, getPosition(), InitSmavaCreepers.ENTITY_SMAVACREEPER_BLOW, getSoundCategory(), 5.0F, 1.0F);
+            this.world.playSound(null, getPosition(), SmavaCreepers.ENTITY_SMAVACREEPER_BLOW, getSoundCategory(), 5.0F, 1.0F);
             this.world.createExplosion(this, this.posX, this.posY, this.posZ, (float)this.explosionRadius * f, flag);
             this.setDead();
         }
@@ -72,11 +70,11 @@ public class EntitySmavaCreeper extends EntityCreeper
 	
     protected SoundEvent getHurtSound(DamageSource damageSourceIn)
     {
-        return InitSmavaCreepers.ENTITY_SMAVACREEPER_HURT;
+        return SmavaCreepers.ENTITY_SMAVACREEPER_HURT;
     }
     
     protected SoundEvent getAmbientSound()
     {
-        return InitSmavaCreepers.ENTITY_SMAVACREEPER_AMBIENT;
+        return SmavaCreepers.ENTITY_SMAVACREEPER_AMBIENT;
     }
 }

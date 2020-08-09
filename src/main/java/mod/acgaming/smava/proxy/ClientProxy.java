@@ -1,7 +1,6 @@
 package mod.acgaming.smava.proxy;
 import mod.acgaming.smava.entity.EntitySmavaCreeper;
 import mod.acgaming.smava.render.RenderSmavaCreeper;
-import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;

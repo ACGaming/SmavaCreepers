@@ -11,7 +11,7 @@ public class ConfigHandler
 	public static int SMAVA_CREEPER_MIN_SPAWN_SIZE;
 	public static int SMAVA_CREEPER_MAX_SPAWN_SIZE;
 	public static int SMAVA_CREEPER_SPAWN_CHANCE;
-	public final String[] usedCategories = new String[] {"Smava Creeper settings"};
+	public final String[] usedCategories = new String[] {"Smava Creepers settings"};
 	  
 	public void loadConfig(FMLPreInitializationEvent event)
 	{
@@ -22,9 +22,9 @@ public class ConfigHandler
 	  
 	private void syncConfigs()
 	{
-		SMAVA_CREEPER_MIN_SPAWN_SIZE = this.config.get("Smava Creeper settings", "Minimum size per spawn group", 1).getInt(1);
-		SMAVA_CREEPER_MAX_SPAWN_SIZE = this.config.get("Smava Creeper settings", "Maximum size per spawn group", 4).getInt(4);
-		SMAVA_CREEPER_SPAWN_CHANCE = this.config.get("Smava Creeper settings", "Spawn chance", 10).getInt(10);
+		SMAVA_CREEPER_MIN_SPAWN_SIZE = this.config.get("Smava Creepers settings", "Minimum size per spawn group", 1).getInt(1);
+		SMAVA_CREEPER_MAX_SPAWN_SIZE = this.config.get("Smava Creepers settings", "Maximum size per spawn group", 4).getInt(4);
+		SMAVA_CREEPER_SPAWN_CHANCE = this.config.get("Smava Creepers settings", "Spawn chance", 10).getInt(10);
 		
 		if (this.config.hasChanged())
 		this.config.save();
