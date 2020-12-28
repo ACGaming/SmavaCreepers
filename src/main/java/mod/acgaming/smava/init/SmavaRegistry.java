@@ -19,12 +19,15 @@ public class SmavaRegistry
 	public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, Reference.MOD_ID);
 	public static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, Reference.MOD_ID);
 
+	// ENTITIES
 	public static final RegistryObject<EntityType<SmavaCreeperEntity>> SMAVA_CREEPER = ENTITIES.register("smava_creeper",
 			() -> register("smava_creeper", EntityType.Builder.create(SmavaCreeperEntity::new, EntityClassification.MONSTER)
 					.size(0.6F, 1.7F).trackingRange(8)));
 
+	// ITEMS
 	public static final RegistryObject<Item> SMAVA_CREEPER_SPAWN_EGG = ITEMS.register("smava_creeper_spawn_egg", () -> new CustomSpawnEggItem(SmavaRegistry.SMAVA_CREEPER::get, 7649828, 11053224, itemBuilder()));
 
+	// SOUND EVENTS
 	public static final RegistryObject<SoundEvent> ENTITY_SMAVA_CREEPER_FUSE = SOUND_EVENTS.register("smava_creeper.fuse", () -> createSound("smava_creeper.fuse"));
 	public static final RegistryObject<SoundEvent> ENTITY_SMAVA_CREEPER_BLOW = SOUND_EVENTS.register("smava_creeper.blow", () -> createSound("smava_creeper.blow"));
 	public static final RegistryObject<SoundEvent> ENTITY_SMAVA_CREEPER_HURT = SOUND_EVENTS.register("smava_creeper.hurt", () -> createSound("smava_creeper.hurt"));

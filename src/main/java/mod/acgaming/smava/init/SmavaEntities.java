@@ -2,6 +2,7 @@ package mod.acgaming.smava.init;
 
 import mod.acgaming.smava.Reference;
 import mod.acgaming.smava.entity.SmavaCreeperEntity;
+import mod.acgaming.smava.utils.ConfigurationHandler;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.entity.EntitySpawnPlacementRegistry.PlacementType;
@@ -39,7 +40,7 @@ public class SmavaEntities
 		}
 	}
 
-	public static void initializeMobs()
+	public static void initializeEntities()
 	{
 		EntitySpawnPlacementRegistry.register(SmavaRegistry.SMAVA_CREEPER.get(), PlacementType.ON_GROUND, Type.MOTION_BLOCKING_NO_LEAVES, MonsterEntity::canMonsterSpawnInLight);
 		GlobalEntityTypeAttributes.put(SmavaRegistry.SMAVA_CREEPER.get(), SmavaCreeperEntity.registerAttributes().create());
@@ -49,7 +50,7 @@ public class SmavaEntities
 	{
 		if (entry.type == oldEntity)
 		{
-			spawns.add(new MobSpawnInfo.Spawners(newEntity, Math.min(1, entry.itemWeight / 5), entry.minCount, entry.maxCount));
+			spawns.add(new MobSpawnInfo.Spawners(newEntity, ConfigurationHandler.SPAWN.weight.get(), ConfigurationHandler.SPAWN.min.get(), ConfigurationHandler.SPAWN.max.get()));
 		}
 	}
 }
