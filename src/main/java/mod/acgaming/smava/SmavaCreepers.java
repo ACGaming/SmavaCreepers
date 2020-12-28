@@ -1,55 +1,41 @@
 package mod.acgaming.smava;
 
-import mod.acgaming.smava.entity.EntitySmavaCreeper;
-import mod.acgaming.smava.render.RenderSmavaCreeper;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvent;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
+import mod.acgaming.smava.client.ClientHandler;
+import mod.acgaming.smava.init.SmavaEntities;
+import mod.acgaming.smava.init.SmavaRegistry;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.Mod.Instance;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-@Mod(modid = "smava", version = "1.1", acceptedMinecraftVersions = "[1.12.2]")
+@Mod(Reference.MOD_ID)
 public class SmavaCreepers
 {
-	public static final String MODID = "smava";
-	public static final String VERSION = "1.1";
+	public static final Logger LOGGER = LogManager.getLogger(Reference.MOD_ID);
 
-	public static final SoundEvent ENTITY_SMAVACREEPER_FUSE = new SoundEvent(new ResourceLocation("smava:entities.smava_creeper.fuse"));
-	public static final SoundEvent ENTITY_SMAVACREEPER_BLOW = new SoundEvent(new ResourceLocation("smava:entities.smava_creeper.blow"));
-	public static final SoundEvent ENTITY_SMAVACREEPER_HURT = new SoundEvent(new ResourceLocation("smava:entities.smava_creeper.hurt"));
-	public static final SoundEvent ENTITY_SMAVACREEPER_AMBIENT = new SoundEvent(new ResourceLocation("smava:entities.smava_creeper.ambient"));
-
-	@Instance
-	public static SmavaCreepers instance;
-
-	@SideOnly(Side.CLIENT)
-	@EventHandler
-	public void preInitClient(FMLPreInitializationEvent event)
+	public SmavaCreepers()
 	{
-		RenderingRegistry.registerEntityRenderingHandler(EntitySmavaCreeper.class, RenderSmavaCreeper.FACTORY);
+		IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+		eventBus.addListener(this::setup);
+
+		SmavaRegistry.ITEMS.register(eventBus);
+		SmavaRegistry.ENTITIES.register(eventBus);
+		SmavaRegistry.SOUND_EVENTS.register(eventBus);
+
+		DistExecutor.runWhenOn(Dist.CLIENT, () -> () ->
+		{
+			eventBus.addListener(ClientHandler::doClientStuff);
+			eventBus.addListener(ClientHandler::registerItemColors);
+		});
 	}
 
-	@EventHandler
-	public void preInit(FMLPreInitializationEvent event)
+	private void setup(final FMLCommonSetupEvent event)
 	{
-
-	}
-
-	@EventHandler
-	public void init(FMLInitializationEvent event)
-	{
-
-	}
-
-	@EventHandler
-	public void postInit(FMLPostInitializationEvent event)
-	{
-
+		SmavaEntities.initializeMobs();
 	}
 }

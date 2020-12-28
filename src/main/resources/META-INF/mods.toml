@@ -1,0 +1,15 @@
+modLoader="javafml"
+loaderVersion="[35,)"
+issueTrackerURL="https://github.com/ACGaming/SmavaCreepers/issues"
+license="MIT"
+
+[[mods]]
+modId="smava"
+version="${file.jarVersion}"
+displayName="Smava Creepers"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/smava"
+authors="ACGaming"
+description='''
+Wenn Kredit, dann...?
+'''
+credits="Code inspired by Instrumental Mobs."
