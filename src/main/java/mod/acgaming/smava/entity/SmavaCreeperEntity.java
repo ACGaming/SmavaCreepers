@@ -168,12 +168,17 @@ public class SmavaCreeperEntity extends MonsterEntity implements IChargeableMob
 
 	protected SoundEvent getDeathSound()
 	{
-		return SmavaRegistry.ENTITY_SMAVA_CREEPER_BLOW.get();
+		return SmavaRegistry.ENTITY_SMAVA_CREEPER_HURT.get();
 	}
 
 	protected SoundEvent getAmbientSound()
 	{
 		return SmavaRegistry.ENTITY_SMAVA_CREEPER_AMBIENT.get();
+	}
+
+	protected float getSoundVolume()
+	{
+		return 0.5F;
 	}
 
 	protected void dropSpecialItems(DamageSource source, int looting, boolean recentlyHitIn)

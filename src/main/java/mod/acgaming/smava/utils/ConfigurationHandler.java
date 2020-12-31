@@ -17,10 +17,10 @@ public class ConfigurationHandler
 
 		Spawn(ForgeConfigSpec.Builder builder)
 		{
-			builder.push("spawn chances");
+			builder.push("Spawn Chances");
 			builder.comment("Configure spawn weight & min/max group size. Set weight to 0 to disable.");
-			min = builder.defineInRange("min", 1, 0, 64);
-			max = builder.defineInRange("max", 1, 0, 64);
+			min = builder.defineInRange("min", 1, 1, 16);
+			max = builder.defineInRange("max", 1, 1, 16);
 			weight = builder.defineInRange("weight", 80, 0, 200);
 			builder.pop();
 		}

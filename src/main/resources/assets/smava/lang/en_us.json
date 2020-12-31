@@ -1,4 +1,5 @@
 {
   "item.smava.smava_creeper_spawn_egg": "Spawn Smava Creeper",
-  "entity.smava.smava_creeper": "Smava Creeper"
+  "entity.smava.smava_creeper": "Smava Creeper",
+  "itemGroup.smava": "Smava Creepers"
 }

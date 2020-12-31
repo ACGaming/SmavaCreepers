@@ -12,17 +12,16 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 @Mod(Reference.MOD_ID)
 public class SmavaCreepers
 {
-	public static final Logger LOGGER = LogManager.getLogger(Reference.MOD_ID);
-
 	public SmavaCreepers()
 	{
 		IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ConfigurationHandler.spec);
+		eventBus.register(ConfigurationHandler.class);
 
 		eventBus.addListener(this::setup);
 
@@ -35,8 +34,6 @@ public class SmavaCreepers
 			eventBus.addListener(ClientHandler::doClientStuff);
 			eventBus.addListener(ClientHandler::registerItemColors);
 		});
-
-		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ConfigurationHandler.spec);
 	}
 
 	private void setup(final FMLCommonSetupEvent event)
